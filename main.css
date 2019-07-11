@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    background-color: rgb(59, 120, 177);
+    font-family: verdana;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin: 5px;
+    color: white;
+    text-shadow: .5px .5px black;
+}
+
+input {
+    border: 2px solid white;
+    width: 25%;
+    text-align: center;
+}
+
+::placeholder {
+    color: white;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+img {
+    height: 300px;
+    margin: 5px;
+    border: 2px solid white;
+}
