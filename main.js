@@ -1,6 +1,6 @@
 function displayMessage(x) {
 
-    console.log(x.message)
+    // console.log(x.message);
     if (x.status === "success") {
         $(`#imageContainer`).html(`<img src="${x.message}">`)
     } else {
@@ -12,17 +12,24 @@ function displayMessage(x) {
 
 function thatsFetch(breed) {
     fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
-        .then(response => response.json())
-        .then(responseJson => displayMessage(responseJson));
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(responseJson => displayMessage(responseJson))
+        .catch(error => console.error(error));
 }
 
 function breedSearch() {
     $('#enterButton').click(event => {
         $('.search').addClass('hidden');
-        let breed = $('#search').val();
+        let breed = $('#search').val().toLowerCase();
         console.log(breed);
         thatsFetch(breed);
     })
 }
 
-$(breedSearch());
+$(breedSearch);
+//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Checking_that_the_fetch_was_successful
